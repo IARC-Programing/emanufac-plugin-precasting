@@ -1,0 +1,35 @@
+{
+  "name": "@iarcpsu/emanufac-plugin-bj-metal-divide",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "echo \"Error: no dev specified\" && exit 0"
+  },
+  "keywords": [],
+  "author": "theethawat <theethawat.s@outlook.co.th>",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.4",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "@iarcpsu/emanufac-be-support": "*",
+    "@iarcpsu/emanufac-constant": "*",
+    "amqplib": "^0.10.3",
+    "chalk": "^5.2.0",
+    "dayjs": "^1.11.7",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-jwt": "^8.4.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.10.0",
+    "socket.io-client": "^4.5.4",
+    "winston": "^3.8.2"
+  },
+  "gitHead": "c913a8c49abbb28d34855f8e45aabd5d9f847cd1"
+}

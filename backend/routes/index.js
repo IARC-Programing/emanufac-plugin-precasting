@@ -1,9 +1,10 @@
 import express from "express";
 
-import metalDivide from "./metalDivide.js";
+import precaseProject from "./precaseProject.routes";
 
+console.log("On Precasting Plugin Route");
 const router = express.Router();
 
-router.use("/metal-divide", metalDivide);
+router.use("/precast-project", precaseProject);
 
 export default router;

@@ -2,13 +2,14 @@ import mongoose from "mongoose";
 
 import config from "../configs/app.js";
 import errorMethods from "../configs/errorMethods.js";
-import MetalDivideModel from "../models/MetalDivide.js";
-import MetalDividePipeline from "../pipelines/metalDivide.pipeline";
+import PrecastProjectModel from "../models/PrecastProject.js";
+import precaseDividePipeline from "../pipelines/precastProject.pipeline.js";
 
 const { ErrorBadRequest, ErrorNotFound } = errorMethods;
 const methods = {
   createPipeline(req) {
-    const { pipeline } = MetalDividePipeline();
+    //  const { pipeline } = precaseDividePipeline();
+    const pipeline = [];
     // query section
     if (req?.query?.name) {
       pipeline.push({
@@ -28,24 +29,7 @@ const methods = {
         },
       });
     }
-    if (req?.query?.manufacturing_order) {
-      pipeline.push({
-        $match: {
-          "manufacturing_order._id": {
-            $eq: mongoose.Types.ObjectId(req?.query?.manufacturing_order),
-          },
-        },
-      });
-    }
-    if (req?.query?.process) {
-      pipeline.push({
-        $match: {
-          "process._id": {
-            $eq: mongoose.Types.ObjectId(req?.query?.process),
-          },
-        },
-      });
-    }
+
     // find one
     if (req?.params?.id) {
       pipeline.push({
@@ -83,11 +67,11 @@ const methods = {
     const limit = +(req?.query?.size || config.pageLimit);
     return new Promise(async (resolve, reject) => {
       try {
-        console.log("On Matal Divide Aggregate");
         Promise.all([
-          MetalDivideModel.aggregate(this.createPipeline(req).pipeline),
+          PrecastProjectModel.aggregate(this.createPipeline(req).pipeline),
         ])
           .then((result) => {
+            console.log("On Final All Precast Project");
             const rows = result[0][0]?.data;
             const count = result[0][0]?.count?.[0]?.total;
             resolve({
@@ -108,7 +92,7 @@ const methods = {
   findById(req) {
     return new Promise(async (resolve, reject) => {
       try {
-        const obj = await MetalDivideModel.aggregate(
+        const obj = await PrecastProjectModel.aggregate(
           this.createPipeline(req).pipeline
         );
 
@@ -125,7 +109,7 @@ const methods = {
   insert(data) {
     return new Promise(async (resolve, reject) => {
       try {
-        const obj = new MetalDivideModel(data);
+        const obj = new PrecastProjectModel(data);
         const inserted = await obj.save();
         resolve(inserted);
       } catch (error) {
@@ -137,11 +121,11 @@ const methods = {
   update(id, data) {
     return new Promise(async (resolve, reject) => {
       try {
-        const obj = await MetalDivideModel.findById(id);
+        const obj = await PrecastProjectModel.findById(id);
         if (!obj) {
           reject(ErrorNotFound("id: not found"));
         }
-        await MetalDivideModel.updateOne({ _id: id }, data);
+        await PrecastProjectModel.updateOne({ _id: id }, data);
         resolve(Object.assign(obj, data));
       } catch (error) {
         reject(error);
@@ -151,7 +135,7 @@ const methods = {
   async delete(id) {
     return new Promise(async (resolve, reject) => {
       try {
-        await MetalDivideModel.findByIdAndDelete(id);
+        await PrecastProjectModel.findByIdAndDelete(id);
         resolve({ success: true });
       } catch (error) {
         reject(ErrorBadRequest(error));
@@ -162,6 +146,4 @@ const methods = {
   async createWarehouseAndEditMetalDivideRecord() {},
 };
 
-export default {
-  ...methods,
-};
+export default methods;

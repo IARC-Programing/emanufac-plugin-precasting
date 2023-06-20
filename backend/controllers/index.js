@@ -1,4 +1,4 @@
-import medalDivideController from "./metalDivide.controller";
+import precaseProjectController from "./precastProject.controller";
 
-export { medalDivideController };
-export default { medalDivideController };
+export { precaseProjectController };
+export default { precaseProjectController };

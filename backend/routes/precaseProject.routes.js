@@ -1,7 +1,7 @@
 import express from "express";
 
 import auth from "../configs/auth";
-import controllers from "../controllers/metalDivide.controller";
+import controllers from "../controllers/precastProject.controller";
 
 const router = express.Router();
 router.get("/", auth.required, controllers.onGetAll);

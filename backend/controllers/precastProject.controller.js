@@ -1,6 +1,6 @@
-import Service from "../services/metalDivide.service";
+import Service from "../services/precastProject.service";
 
-const medalDivideController = {
+const precastProjectController = {
   async onGetAll(req, res) {
     try {
       const result = await Service.find(req);
@@ -43,4 +43,4 @@ const medalDivideController = {
   },
 };
 
-export default medalDivideController;
+export default precastProjectController;

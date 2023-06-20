@@ -1,4 +1,5 @@
-import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+import React from "react";
+import { Switch, Route, Redirect, useLocation } from "react-router";
 
 function App({ prefix }) {
   const { pathname } = useLocation();
@@ -6,15 +7,11 @@ function App({ prefix }) {
     <div className='App'>
       <div className='py-4'>
         <Switch>
-          <Redirect exact from={`${prefix}`} to={`${prefix}/main`} />
+          <Redirect exact from={`${prefix}`} to={`${prefix}/project`} />
           <Redirect from='/:url*(/+)' to={pathname.slice(0, -1)} />
 
-          <Route exact path={`${prefix}/main`}>
-            <div></div>
-          </Route>
-
-          <Route exact path={`${prefix}/warehouse`}>
-            <div></div>
+          <Route exact path={`${prefix}/project`}>
+            <div>Project</div>
           </Route>
 
           <Route path='*'>

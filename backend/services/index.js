@@ -1,5 +1,5 @@
-import metalDivide from "./metalDivide.service";
-export { metalDivide };
+import precaseProject from "./precastProject.service";
+export { precaseProject };
 export default {
-    metalDivide
+  precaseProject,
 };

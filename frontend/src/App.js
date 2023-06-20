@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 
-function App() {
+function App({ prefix }) {
+  const { pathname } = useLocation();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div className='py-4'>
+        <Switch>
+          <Redirect exact from={`${prefix}`} to={`${prefix}/main`} />
+          <Redirect from='/:url*(/+)' to={pathname.slice(0, -1)} />
+
+          <Route exact path={`${prefix}/main`}>
+            <div></div>
+          </Route>
+
+          <Route exact path={`${prefix}/warehouse`}>
+            <div></div>
+          </Route>
+
+          <Route path='*'>
+            <div>Not Found</div>
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 }

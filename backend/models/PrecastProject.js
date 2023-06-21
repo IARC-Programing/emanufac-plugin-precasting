@@ -11,7 +11,6 @@ const schema = new mongoose.Schema(
       {
         name: { type: String },
         width: { type: Number },
-        height: { type: Number },
         length: { type: Number },
         structure: {
           db12: { type: Number },
@@ -28,7 +27,7 @@ const schema = new mongoose.Schema(
         at: { type: Number },
         width_list: [
           {
-            width: { type: Number },
+            length: { type: Number },
             structure: {
               db12: { type: Number },
               db16: { type: Number },

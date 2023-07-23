@@ -28,6 +28,7 @@ const schema = new mongoose.Schema(
         width_list: [
           {
             length: { type: Number },
+            amount: { type: Number },
             structure: {
               db12: { type: Number },
               db16: { type: Number },

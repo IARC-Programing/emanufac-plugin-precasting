@@ -27,6 +27,22 @@ function App({ prefix, helpingComponent, React }) {
               React={React}
             />
           </Route>
+          <Route exact path={`${prefix}/project/detail/:id`}>
+            <DetailProject
+              helpingComponent={helpingComponent}
+              title='รายละเอียดโปรเจกต์'
+              subtitle={moduleName}
+              React={React}
+            />
+          </Route>
+          <Route exact path={`${prefix}/project/edit/:id`}>
+            <EditProject
+              helpingComponent={helpingComponent}
+              title='แก้ไขโปรเจกต์'
+              subtitle={moduleName}
+              React={React}
+            />
+          </Route>
           <Route path='*'>
             <div>Not Found</div>
           </Route>

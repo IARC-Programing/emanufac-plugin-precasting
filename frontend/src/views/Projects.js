@@ -101,10 +101,23 @@ function Projects({
                           <TableCell>{row.name}</TableCell>
                           <TableCell>
                             <div className='flex gap-2'>
-                              <Button variant='contained' color='info'>
+                              <Button
+                                variant='contained'
+                                color='info'
+                                onClick={() => {
+                                  history.push(`project/detail/${row._id}`);
+                                }}
+                              >
                                 รายละเอียด
                               </Button>
-                              <Button variant='contained' color='warning'>
+
+                              <Button
+                                variant='contained'
+                                color='warning'
+                                onClick={() => {
+                                  history.push(`project/edit/${row._id}`);
+                                }}
+                              >
                                 แก้ไข
                               </Button>
                               <Button variant='contained' color='error'>

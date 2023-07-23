@@ -110,7 +110,17 @@ function Projects({
                               >
                                 รายละเอียด
                               </Button>
-
+                              <Button
+                                variant='contained'
+                                color='secondary'
+                                onClick={() => {
+                                  history.push(
+                                    `project/basic-arrangement/${row._id}`
+                                  );
+                                }}
+                              >
+                                จัดเหล็กอย่างง่าย
+                              </Button>
                               <Button
                                 variant='contained'
                                 color='warning'

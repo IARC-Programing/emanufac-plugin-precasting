@@ -1,5 +1,12 @@
 import { Switch, Route, Redirect, useLocation } from "react-router";
-import { CreateProject, DetailProject, EditProject, Projects } from "./views";
+
+import {
+  CreateProject,
+  DetailProject,
+  EditProject,
+  Projects,
+  BasicMetalArrangement,
+} from "./views";
 
 function App({ prefix, helpingComponent, React }) {
   const { pathname } = useLocation();
@@ -39,6 +46,15 @@ function App({ prefix, helpingComponent, React }) {
             <EditProject
               helpingComponent={helpingComponent}
               title='แก้ไขโปรเจกต์'
+              subtitle={moduleName}
+              React={React}
+            />
+          </Route>
+
+          <Route exact path={`${prefix}/project/basic-arrangement/:id`}>
+            <BasicMetalArrangement
+              helpingComponent={helpingComponent}
+              title='วิเคราะห์การจัดการเหล็กอย่างง่าย'
               subtitle={moduleName}
               React={React}
             />

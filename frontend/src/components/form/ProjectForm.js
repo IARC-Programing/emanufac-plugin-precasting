@@ -58,13 +58,13 @@ function BeamWithForm({ control, beamIndex }) {
                     {...field}
                     fullWidth
                     size='small'
-                    label='จำนวน (ชิ้น)'
+                    label='จำนวนคาน (ตัว)'
                     style={{ backgroundColor: "#fff" }}
                   />
                 )}
               />
             </div>
-            <div className='w-full px-1'>เหล็กโครงสร้าง</div>
+            <div className='w-full px-1'>เหล็กโครงสร้าง (แต่ละเส้นความยาว)</div>
             <div className='w-1/2 md:w-1/4 py-2 px-1'>
               <Controller
                 name={`beams[${beamIndex}].width_list[${index}].structure.db12`}
@@ -262,7 +262,7 @@ function ProjectForm({ defaultValue, control }) {
                 />
               </div>
               <div className='w-full py-2 px-1'>
-                <div className='font-semibold '>เหล็กโครงสร้าง</div>
+                <div className='font-semibold '>จำนวนเส้นของเหล็ก</div>
               </div>
               <div className='w-1/4 py-2 px-1'>
                 <Controller
@@ -270,7 +270,12 @@ function ProjectForm({ defaultValue, control }) {
                   defaultValue={field.structure ? field.structure.db12 : ""}
                   control={control}
                   render={({ field }) => (
-                    <TextField {...field} fullWidth size='small' label='DB12' />
+                    <TextField
+                      {...field}
+                      fullWidth
+                      size='small'
+                      label='DB12 (เส้น)'
+                    />
                   )}
                 />
               </div>
@@ -280,7 +285,12 @@ function ProjectForm({ defaultValue, control }) {
                   defaultValue={field.structure ? field.structure.db16 : ""}
                   control={control}
                   render={({ field }) => (
-                    <TextField {...field} fullWidth size='small' label='DB16' />
+                    <TextField
+                      {...field}
+                      fullWidth
+                      size='small'
+                      label='DB16 (เส้น)'
+                    />
                   )}
                 />
               </div>
@@ -290,7 +300,12 @@ function ProjectForm({ defaultValue, control }) {
                   defaultValue={field.structure ? field.structure.db20 : ""}
                   control={control}
                   render={({ field }) => (
-                    <TextField {...field} fullWidth size='small' label='DB20' />
+                    <TextField
+                      {...field}
+                      fullWidth
+                      size='small'
+                      label='DB20 (เส้น)'
+                    />
                   )}
                 />
               </div>
@@ -300,7 +315,12 @@ function ProjectForm({ defaultValue, control }) {
                   defaultValue={field.structure ? field.structure.db25 : ""}
                   control={control}
                   render={({ field }) => (
-                    <TextField {...field} fullWidth size='small' label='DB25' />
+                    <TextField
+                      {...field}
+                      fullWidth
+                      size='small'
+                      label='DB25 (เส้น)'
+                    />
                   )}
                 />
               </div>
@@ -349,7 +369,12 @@ function ProjectForm({ defaultValue, control }) {
                   defaultValue={field.at}
                   control={control}
                   render={({ field }) => (
-                    <TextField {...field} fullWidth size='small' label='@' />
+                    <TextField
+                      {...field}
+                      fullWidth
+                      size='small'
+                      label='ระยะห่างของคานแต่ละตัว (@)'
+                    />
                   )}
                 />
               </div>

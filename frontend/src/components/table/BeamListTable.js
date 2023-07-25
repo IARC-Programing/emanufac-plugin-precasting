@@ -26,6 +26,13 @@ function BeamListTable({ project }) {
     minimumFractionDigits: 2,
   });
 
+  const decimalFormatter = new Intl.NumberFormat("th", {
+    style: "decimal",
+    currency: "THB",
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 0,
+  });
+
   return (
     <div>
       <Paper>
@@ -68,6 +75,14 @@ function BeamListTable({ project }) {
                   </div>
                 </TableCell>{" "}
                 <TableCell
+                  colSpan={4}
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                >
+                  <div className='font-semibold text-center'>
+                    เหล็กโครงสร้าง (เส้น)
+                  </div>
+                </TableCell>{" "}
+                <TableCell
                   colSpan={2}
                   sx={{ border: 1, borderColor: "#dcdcdc" }}
                 >
@@ -75,6 +90,14 @@ function BeamListTable({ project }) {
                     เหล็กปลอก (ม.)
                   </div>
                 </TableCell>
+                <TableCell
+                  colSpan={2}
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                >
+                  <div className='font-semibold text-center'>
+                    เหล็กปลอก (เส้น)
+                  </div>
+                </TableCell>{" "}
                 <TableCell
                   rowSpan={2}
                   sx={{ border: 1, borderColor: "#dcdcdc" }}
@@ -109,6 +132,24 @@ function BeamListTable({ project }) {
                   DB25
                 </TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                  DB12
+                </TableCell>{" "}
+                <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                  DB16
+                </TableCell>{" "}
+                <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                  DB20
+                </TableCell>
+                <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                  DB25
+                </TableCell>
+                <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                  RB6
+                </TableCell>
+                <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                  RB9
+                </TableCell>
+                <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                   RB6
                 </TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
@@ -137,7 +178,9 @@ function BeamListTable({ project }) {
                       {row.name}
                     </TableCell>
                     <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                      {row.beamLevel ? "" : row.length}
+                      <div className='font-semibold'>
+                        {row.beamLevel ? "" : row.length}
+                      </div>
                     </TableCell>
                     <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                       {row.beamLevel ? row.width : ""}
@@ -161,10 +204,56 @@ function BeamListTable({ project }) {
                       {row.structure ? row.structure.db25 : ""}
                     </TableCell>
                     <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                      <div className='font-semibold'>
+                        {!row.beamLevel
+                          ? decimalFormatter.format(
+                              row.structure.db12 / row.length
+                            )
+                          : ""}
+                      </div>
+                    </TableCell>{" "}
+                    <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                      <div className='font-semibold'>
+                        {!row.beamLevel
+                          ? decimalFormatter.format(
+                              row.structure.db16 / row.length
+                            )
+                          : ""}
+                      </div>
+                    </TableCell>
+                    <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                      <div className='font-semibold'>
+                        {!row.beamLevel
+                          ? decimalFormatter.format(
+                              row.structure.db20 / row.length
+                            )
+                          : ""}
+                      </div>
+                    </TableCell>
+                    <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                      <div className='font-semibold'>
+                        {!row.beamLevel
+                          ? decimalFormatter.format(
+                              row.structure.db25 / row.length
+                            )
+                          : ""}
+                      </div>
+                    </TableCell>
+                    <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                       {row.casing ? row.casing.rb6 : ""}
                     </TableCell>
                     <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                       {row.casing ? row.casing.rb9 : ""}
+                    </TableCell>
+                    <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                      {row.casing
+                        ? decimalFormatter.format(row.casing.rb6 / row.length)
+                        : ""}
+                    </TableCell>
+                    <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
+                      {row.casing
+                        ? decimalFormatter.format(row.casing.rb9 / row.length)
+                        : ""}
                     </TableCell>
                     <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                       {row.beamLevel ? row.casting_amount : ""}
@@ -208,6 +297,18 @@ function BeamListTable({ project }) {
                     calculateTotal("db25", "structure")
                   )}
                 </TableCell>
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>{" "}
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>{" "}
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                   {currencyFormatter.format(calculateTotal("rb6", "casing"))}
                 </TableCell>
@@ -242,6 +343,18 @@ function BeamListTable({ project }) {
                     calculateTotal("db25", "structure") / 12
                   )}
                 </TableCell>
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>{" "}
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                   {currencyFormatter.format(
                     calculateTotal("rb6", "casing") / 10
@@ -252,6 +365,12 @@ function BeamListTable({ project }) {
                     calculateTotal("rb9", "casing") / 10
                   )}
                 </TableCell>
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>
               </TableRow>{" "}
               <TableRow>
                 <TableCell
@@ -280,6 +399,18 @@ function BeamListTable({ project }) {
                     ((calculateTotal("db25", "structure") / 12) * 120) / 100
                   )}
                 </TableCell>
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>{" "}
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                   {currencyFormatter.format(
                     ((calculateTotal("rb6", "casing") / 10) * 120) / 100
@@ -290,6 +421,12 @@ function BeamListTable({ project }) {
                     ((calculateTotal("rb9", "casing") / 10) * 120) / 100
                   )}
                 </TableCell>
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>{" "}
+                <TableCell
+                  sx={{ border: 1, borderColor: "#dcdcdc" }}
+                ></TableCell>
               </TableRow>
             </TableBody>
           </Table>

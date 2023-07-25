@@ -14,6 +14,7 @@ import {
   BeamListTable,
   MetalByWidthTable,
   StructureAnalyzeBox,
+  AmoutMetalByWidthTable,
 } from "../components";
 
 function BasicMetalArrangement({
@@ -100,6 +101,16 @@ function BasicMetalArrangement({
                   คานตามความยาวที่เท่ากัน
                 </div>
                 <MetalByWidthTable beamAndStrcutureList={project.beams} />
+              </CardContent>
+            </Card>
+          </div>
+          <div className='my-2'>
+            <Card>
+              <CardContent>
+                <div className='font-semibold font-display'>
+                  ปริมาณเส้นตามความยาว
+                </div>
+                <AmoutMetalByWidthTable beamAndStrcutureList={project.beams} />
               </CardContent>
             </Card>
           </div>

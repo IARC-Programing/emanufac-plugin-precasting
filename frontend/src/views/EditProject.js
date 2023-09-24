@@ -13,7 +13,7 @@ function EditProject({
 }) {
   const { useState, useEffect } = React;
   const params = useParams();
-  const { control, handleSubmit, setValue } = useForm();
+  const { control, handleSubmit, setValue, watch } = useForm();
   const history = useHistory();
   const [project, setProject] = useState();
   const [isReady, setIsReady] = useState(false);
@@ -72,7 +72,12 @@ function EditProject({
         <form>
           <Card>
             <CardContent>
-              <ProjectForm control={control} defaultValue={project} />
+              <ProjectForm
+                control={control}
+                defaultValue={project}
+                setValue={setValue}
+                watch={watch}
+              />
             </CardContent>
           </Card>
           <div className='flex justify-end mt-4'>

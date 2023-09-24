@@ -13,7 +13,7 @@ function CreateProject({
   React,
 }) {
   const { useState, useEffect } = React;
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, setValue, watch } = useForm();
   const history = useHistory();
 
   const handleCreateData = async (data) => {
@@ -38,7 +38,12 @@ function CreateProject({
         <form>
           <Card>
             <CardContent>
-              <ProjectForm control={control} defaultValue={{}} />
+              <ProjectForm
+                control={control}
+                defaultValue={{}}
+                setValue={setValue}
+                watch={watch}
+              />
             </CardContent>
           </Card>
           <div className='flex justify-end mt-4'>

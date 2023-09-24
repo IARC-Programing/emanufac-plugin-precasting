@@ -43,6 +43,10 @@ const schema = new mongoose.Schema(
         ],
       },
     ],
+    process: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Process",
+    },
   },
   { timestamps: true }
 );

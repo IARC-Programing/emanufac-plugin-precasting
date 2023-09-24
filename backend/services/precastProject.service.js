@@ -30,6 +30,16 @@ const methods = {
       });
     }
 
+    if (req?.query?.process) {
+      pipeline.push({
+        $match: {
+          process: {
+            $eq: mongoose.Types.ObjectId(req?.query?.process),
+          },
+        },
+      });
+    }
+
     // find one
     if (req?.params?.id) {
       pipeline.push({

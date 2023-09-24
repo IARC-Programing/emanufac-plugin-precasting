@@ -1,3 +1,6 @@
+// db1 represent 1 db any
+// can be 1-db2  or 1-db12 , etc.
+
 import db1 from "./2-1DB.png";
 import db2 from "./2-2DB.png";
 import db3 from "./2-3DB.png";

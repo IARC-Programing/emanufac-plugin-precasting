@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import _ from "lodash";
 
+import StructureIllustrator from "../box/StructureIllustrator";
+
 function BeamWithForm({ control, beamIndex, setValue, watch }) {
   const { fields, append, remove } = useFieldArray({
     control,
@@ -270,7 +272,12 @@ function ProjectForm({ defaultValue, control, setValue, watch }) {
               className='w-full p-2 flex flex-wrap border rounded-md my-2'
               key={field.id}
             >
-              <div className='w-full lg:w-1/3'></div>
+              <div className='w-full lg:w-1/3'>
+                <StructureIllustrator
+                  beamStructure={watch(`beams[${index}].structure`)}
+                  jacketAmount={watch(`beams[${index}].casting_amount`)}
+                />
+              </div>
               <div className='w-full lg:w-2/3 p-4 flex flex-wrap'>
                 <div className='w-full py-1 flex justify-between'>
                   <div className='font-semibold '>คานที่ {index + 1}</div>

@@ -9,6 +9,7 @@ import {
   TableCell,
 } from "@mui/material";
 import _ from "lodash";
+import StructureIllustrator from "../box/StructureIllustrator";
 
 function BeamListTable({ project }) {
   const calculateTotal = (structureCode, typeCode = "structure") => {
@@ -174,9 +175,20 @@ function BeamListTable({ project }) {
                           }
                     }
                   >
-                    <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                      {row.name}
-                    </TableCell>
+                    {row.beamLevel && (
+                      <TableCell
+                        sx={{ border: 1, borderColor: "#dcdcdc" }}
+                        rowSpan={_.size(row.width_list) + 1}
+                      >
+                        {row.name}
+                        <div className='w-24'>
+                          <StructureIllustrator
+                            beamStructure={row.structure}
+                            jacketAmount={row.casting_amount}
+                          />
+                        </div>
+                      </TableCell>
+                    )}
                     <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                       <div className='font-semibold'>
                         {row.beamLevel ? "" : row.length}

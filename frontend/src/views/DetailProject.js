@@ -1,4 +1,4 @@
-import { LinearProgress } from "@mui/material";
+import { LinearProgress, Button } from "@mui/material";
 import { useParams } from "react-router";
 import _ from "lodash";
 
@@ -61,8 +61,22 @@ function DetailProject({
     <div>
       <div className='flex justify-between'>
         <HelpingComponent.ViewTitle title={title} subtitle={subtitle} />
+        <div className='self-center print-disable'>
+          <Button
+            variant='contained'
+            color='info'
+            onClick={() => {
+              window.print();
+            }}
+          >
+            พิมพ์
+          </Button>
+        </div>
       </div>
-      <HelpingComponent.BackButton />
+      <div className='print-disable'>
+        <HelpingComponent.BackButton />
+      </div>
+
       <div className='my-4'>
         <div className='font-semibold font-display text-xl'>{project.name}</div>
         <div className='my-4'>

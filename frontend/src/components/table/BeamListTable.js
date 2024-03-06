@@ -34,6 +34,8 @@ function BeamListTable({ project }) {
     minimumFractionDigits: 0,
   });
 
+  const nanFree = (data) => (isNaN(parseFloat(data)) ? "" : data);
+
   return (
     <div>
       <Paper>
@@ -218,8 +220,10 @@ function BeamListTable({ project }) {
                     <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                       <div className='font-semibold'>
                         {!row.beamLevel
-                          ? decimalFormatter.format(
-                              row.structure.db12 / row.length
+                          ? nanFree(
+                              decimalFormatter.format(
+                                row.structure.db12 / row.length
+                              )
                             )
                           : ""}
                       </div>
@@ -227,8 +231,10 @@ function BeamListTable({ project }) {
                     <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                       <div className='font-semibold'>
                         {!row.beamLevel
-                          ? decimalFormatter.format(
-                              row.structure.db16 / row.length
+                          ? nanFree(
+                              decimalFormatter.format(
+                                row.structure.db16 / row.length
+                              )
                             )
                           : ""}
                       </div>
@@ -236,8 +242,10 @@ function BeamListTable({ project }) {
                     <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                       <div className='font-semibold'>
                         {!row.beamLevel
-                          ? decimalFormatter.format(
-                              row.structure.db20 / row.length
+                          ? nanFree(
+                              decimalFormatter.format(
+                                row.structure.db20 / row.length
+                              )
                             )
                           : ""}
                       </div>
@@ -245,8 +253,10 @@ function BeamListTable({ project }) {
                     <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
                       <div className='font-semibold'>
                         {!row.beamLevel
-                          ? decimalFormatter.format(
-                              row.structure.db25 / row.length
+                          ? nanFree(
+                              decimalFormatter.format(
+                                row.structure.db25 / row.length
+                              )
                             )
                           : ""}
                       </div>
@@ -290,23 +300,31 @@ function BeamListTable({ project }) {
                   <div className='font-semibold'>รวม</div>
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    calculateTotal("db12", "structure")
+                  {nanFree(
+                    currencyFormatter.format(
+                      calculateTotal("db12", "structure")
+                    )
                   )}
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    calculateTotal("db16", "structure")
+                  {nanFree(
+                    currencyFormatter.format(
+                      calculateTotal("db16", "structure")
+                    )
                   )}
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    calculateTotal("db20", "structure")
+                  {nanFree(
+                    currencyFormatter.format(
+                      calculateTotal("db20", "structure")
+                    )
                   )}
                 </TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    calculateTotal("db25", "structure")
+                  {nanFree(
+                    currencyFormatter.format(
+                      calculateTotal("db25", "structure")
+                    )
                   )}
                 </TableCell>
                 <TableCell
@@ -322,10 +340,14 @@ function BeamListTable({ project }) {
                   sx={{ border: 1, borderColor: "#dcdcdc" }}
                 ></TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(calculateTotal("rb6", "casing"))}
+                  {nanFree(
+                    currencyFormatter.format(calculateTotal("rb6", "casing"))
+                  )}
                 </TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(calculateTotal("rb9", "casing"))}
+                  {nanFree(
+                    currencyFormatter.format(calculateTotal("rb9", "casing"))
+                  )}
                 </TableCell>
               </TableRow>{" "}
               <TableRow>
@@ -336,23 +358,31 @@ function BeamListTable({ project }) {
                   <div className='font-semibold'>จำนวนเส้น</div>
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    calculateTotal("db12", "structure") / 12
+                  {nanFree(
+                    currencyFormatter.format(
+                      calculateTotal("db12", "structure") / 12
+                    )
                   )}
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    calculateTotal("db16", "structure") / 12
+                  {nanFree(
+                    currencyFormatter.format(
+                      calculateTotal("db16", "structure") / 12
+                    )
                   )}
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    calculateTotal("db20", "structure") / 12
+                  {nanFree(
+                    currencyFormatter.format(
+                      calculateTotal("db20", "structure") / 12
+                    )
                   )}
                 </TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    calculateTotal("db25", "structure") / 12
+                  {nanFree(
+                    currencyFormatter.format(
+                      calculateTotal("db25", "structure") / 12
+                    )
                   )}
                 </TableCell>
                 <TableCell
@@ -368,13 +398,17 @@ function BeamListTable({ project }) {
                   sx={{ border: 1, borderColor: "#dcdcdc" }}
                 ></TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    calculateTotal("rb6", "casing") / 10
+                  {nanFree(
+                    currencyFormatter.format(
+                      calculateTotal("rb6", "casing") / 10
+                    )
                   )}
                 </TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    calculateTotal("rb9", "casing") / 10
+                  {nanFree(
+                    currencyFormatter.format(
+                      calculateTotal("rb9", "casing") / 10
+                    )
                   )}
                 </TableCell>
                 <TableCell
@@ -392,23 +426,31 @@ function BeamListTable({ project }) {
                   <div className='font-semibold'>คิดเผื่อ 20%</div>
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    ((calculateTotal("db12", "structure") / 12) * 120) / 100
+                  {nanFree(
+                    currencyFormatter.format(
+                      ((calculateTotal("db12", "structure") / 12) * 120) / 100
+                    )
                   )}
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    ((calculateTotal("db16", "structure") / 12) * 120) / 100
+                  {nanFree(
+                    currencyFormatter.format(
+                      ((calculateTotal("db16", "structure") / 12) * 120) / 100
+                    )
                   )}
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    ((calculateTotal("db20", "structure") / 12) * 120) / 100
+                  {nanFree(
+                    currencyFormatter.format(
+                      ((calculateTotal("db20", "structure") / 12) * 120) / 100
+                    )
                   )}
                 </TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    ((calculateTotal("db25", "structure") / 12) * 120) / 100
+                  {nanFree(
+                    currencyFormatter.format(
+                      ((calculateTotal("db25", "structure") / 12) * 120) / 100
+                    )
                   )}
                 </TableCell>
                 <TableCell
@@ -424,13 +466,17 @@ function BeamListTable({ project }) {
                   sx={{ border: 1, borderColor: "#dcdcdc" }}
                 ></TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    ((calculateTotal("rb6", "casing") / 10) * 120) / 100
+                  {nanFree(
+                    currencyFormatter.format(
+                      ((calculateTotal("rb6", "casing") / 10) * 120) / 100
+                    )
                   )}
                 </TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    ((calculateTotal("rb9", "casing") / 10) * 120) / 100
+                  {nanFree(
+                    currencyFormatter.format(
+                      ((calculateTotal("rb9", "casing") / 10) * 120) / 100
+                    )
                   )}
                 </TableCell>
                 <TableCell

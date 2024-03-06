@@ -45,7 +45,7 @@ function App({ prefix, helpingComponent, React }) {
           <Route exact path={`${prefix}/project/edit/:id`}>
             <EditProject
               helpingComponent={helpingComponent}
-              title='แก้ไขโปรเจกต์'
+              title='จัดการคานของโปรเจกต์'
               subtitle={moduleName}
               React={React}
             />

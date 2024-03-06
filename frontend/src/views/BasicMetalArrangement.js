@@ -97,23 +97,23 @@ function BasicMetalArrangement({
           <div className='my-2'>
             <Card>
               <CardContent>
-                <div className='font-semibold font-display'>
-                  คานตามความยาวที่เท่ากัน
+                <div className='font-semibold font-display text-lg'>
+                  สรุปรวมคานตามความยาวที่เท่ากัน
                 </div>
+                <p className='mb-4 text-sm'>
+                  เป็นการรวมว่าในความยาวแต่ละขนาด
+                  มีการใช้เหล็กโครงสร้างขนาดต่างๆ อย่างไรบ้าง
+                </p>
+                <div className='font-semibold font-display'>รวมความยาว</div>
                 <MetalByWidthTable beamAndStrcutureList={project.beams} />
-              </CardContent>
-            </Card>
-          </div>
-          <div className='my-2'>
-            <Card>
-              <CardContent>
                 <div className='font-semibold font-display'>
-                  ปริมาณเส้นตามความยาว
+                  รวมปริมาณเส้นของเหล็ก
                 </div>
                 <AmoutMetalByWidthTable beamAndStrcutureList={project.beams} />
               </CardContent>
             </Card>
           </div>
+
           <div className='my-2'>
             <Card>
               <CardContent>

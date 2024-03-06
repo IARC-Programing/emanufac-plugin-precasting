@@ -25,6 +25,8 @@ function AmoutMetalByWidthTable({ beamAndStrcutureList }) {
     minimumFractionDigits: 2,
   });
 
+  const nanFree = (data) => (isNaN(parseFloat(data)) ? "" : data);
+
   return (
     <div className='my-2'>
       <TableContainer>
@@ -76,33 +78,45 @@ function AmoutMetalByWidthTable({ beamAndStrcutureList }) {
                   {index}
                 </TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    _.sumBy(eachGroup, "structure.db12") / index
+                  {nanFree(
+                    currencyFormatter.format(
+                      _.sumBy(eachGroup, "structure.db12") / index
+                    )
                   )}
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    _.sumBy(eachGroup, "structure.db16") / index
+                  {nanFree(
+                    currencyFormatter.format(
+                      _.sumBy(eachGroup, "structure.db16") / index
+                    )
                   )}
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    _.sumBy(eachGroup, "structure.db20") / index
+                  {nanFree(
+                    currencyFormatter.format(
+                      _.sumBy(eachGroup, "structure.db20") / index
+                    )
                   )}
                 </TableCell>
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    _.sumBy(eachGroup, "structure.db25") / index
+                  {nanFree(
+                    currencyFormatter.format(
+                      _.sumBy(eachGroup, "structure.db25") / index
+                    )
                   )}
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    _.sumBy(eachGroup, "casing.rb6") / index
+                  {nanFree(
+                    currencyFormatter.format(
+                      _.sumBy(eachGroup, "casing.rb6") / index
+                    )
                   )}
                 </TableCell>{" "}
                 <TableCell sx={{ border: 1, borderColor: "#dcdcdc" }}>
-                  {currencyFormatter.format(
-                    _.sumBy(eachGroup, "casing.rb9") / index
+                  {nanFree(
+                    currencyFormatter.format(
+                      _.sumBy(eachGroup, "casing.rb9") / index
+                    )
                   )}
                 </TableCell>
               </TableRow>

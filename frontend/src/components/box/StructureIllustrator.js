@@ -4,8 +4,8 @@ import findImageOfStructure from "../../utils/findImageOfStructure";
 
 function StructureIllustrator({ beamStructure, jacketAmount }) {
   const unNullStructure = [];
-  const { db12, db16, db20, db25 } = beamStructure;
-  const jacketAmoutNumber = parseInt(jacketAmount, 10);
+  const { db12, db16, db20, db25 } = beamStructure || {};
+  const jacketAmoutNumber = parseInt(jacketAmount, 10); // จำนวนเหล็กปลอก
 
   if (db12) {
     unNullStructure.push({ name: "db12", amount: db12 });

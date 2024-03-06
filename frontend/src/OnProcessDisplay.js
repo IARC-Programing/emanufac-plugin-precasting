@@ -102,9 +102,9 @@ export default function OnProcessDisplay({
                             `/plugin/precasting/project/edit/${eachProject._id}`
                           );
                         }}
-                        startIcon={<i className='fas fa-edit'></i>}
+                        startIcon={<i className='fas fa-hammer'></i>}
                       >
-                        แก้ไข
+                        จัดการคาน
                       </Button>
 
                       <Button
